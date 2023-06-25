@@ -1,21 +1,21 @@
 [
-    {
-      "name": "nbc-lab-container",
-      "image": "nginx:latest",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "protocol": "tcp"
-        }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/nbc-lab",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
+  {
+    "name": "nbc-lab-container",
+    "image": "155009719402.dkr.ecr.us-west-1.amazonaws.com/nbc-venm-app:v1.0.5",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/nbc-lab",
+        "awslogs-region": "us-west-1",
+        "awslogs-stream-prefix": "ecs"
       }
     }
-  ]
+  }
+]
