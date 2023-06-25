@@ -23,14 +23,16 @@ module "ecs" {
 }
 
 module "rds" {
-  source               = "../modules/rds"
-  db_name              = var.database_name
-  db_username          = var.database_username
-  db_password          = var.database_password
-  db_identifier        = var.database_identifier
-  db_instance_class    = "db.t2.micro"
-  db_allocated_storage = 10
-  private_subnet_ids   = [
+  source                  = "../modules/rds"
+  db_name                 = var.database_name
+  db_username             = var.database_username
+  db_password             = var.database_password
+  db_identifier           = var.database_identifier
+  ecs_security_group_id   = module.ecs.security_group_id
+  db_instance_class       = "db.t2.micro"
+  vpc_id                  = module.vpc.vpc_id
+  db_allocated_storage    = 10
+  private_subnet_ids      = [
     module.vpc.private_subnet_a_id,
     module.vpc.private_subnet_b_id
   ]
@@ -40,7 +42,7 @@ output "loadbalancer_url" {
   value = module.ecs.nbc-lab
 }
 
-output "rds_instance_id" {
-  description = "ID of the RDS instance"
-  value       = module.rds.rds_instance_id
+output "rds_endpoint" {
+  description = "RDS instance endpoint"
+  value       = module.rds.rds_endpoint
 }
