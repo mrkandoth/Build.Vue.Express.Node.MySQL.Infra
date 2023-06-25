@@ -40,11 +40,11 @@ resource "aws_cloudwatch_log_group" "nbc-lab" {
 }
 
 resource "aws_lb_target_group" "nbc-lab" {
-  name             = "nbc-lab-target-group"
-  port             = 8080
-  protocol         = "HTTP"
-  vpc_id           = var.vpc_id
-  target_type      = "ip"
+  name        = "nbc-lab-target-group"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
 }
 
 resource "aws_lb_listener" "nbc-lab" {
