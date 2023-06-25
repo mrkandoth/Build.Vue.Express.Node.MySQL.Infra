@@ -32,6 +32,8 @@ module "rds" {
   db_instance_class       = "db.t2.micro"
   vpc_id                  = module.vpc.vpc_id
   db_allocated_storage    = 10
+  skip_final_snapshot     = true
+  final_snapshot_identifier = "nbc-lab-rds-backup"
   private_subnet_ids      = [
     module.vpc.private_subnet_a_id,
     module.vpc.private_subnet_b_id
