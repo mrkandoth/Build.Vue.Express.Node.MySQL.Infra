@@ -1,0 +1,9 @@
+{
+    "name": "nbc-lab-infra",
+    "version": "1.0.0",
+    "description": "An e2e IaC pipeline built using Terraform to bootstrap AWS ECS Infra with ALB and MySQL RDS",
+    "main": "index.js",
+    "author": "Mrudul Kandoth",
+    "private": "true",
+    "license": "GPL"
+}

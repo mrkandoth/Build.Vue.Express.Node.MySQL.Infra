@@ -109,6 +109,20 @@ resource "aws_iam_role" "nbc-lab" {
 EOF
 }
 
+resource "aws_iam_role_policy" "ecs_task_role_policy" {
+  role   = aws_iam_role.nbc-lab.name
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "secretsmanager:GetSecretValue",
+        "Resource": "arn:aws:secretsmanager:us-west-1:155009719402:secret:dev/mysql/cred-MPSO4k"
+      }
+    ]
+  })
+}
+
 resource "aws_iam_role_policy_attachment" "nbc-lab-ecs-task-policy-attachment" {
   role       = aws_iam_role.nbc-lab.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
