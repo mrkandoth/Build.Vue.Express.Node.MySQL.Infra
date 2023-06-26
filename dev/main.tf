@@ -41,10 +41,18 @@ module "rds" {
 }
 
 output "loadbalancer_url" {
-  value = module.ecs.nbc-lab
+  value = module.ecs.nbc-lab-load_balancer
 }
 
 output "rds_endpoint" {
   description = "RDS instance endpoint"
   value       = module.rds.rds_endpoint
+}
+
+output "aws_ecs_cluster" {
+  value = module.ecs.nbc-lab-ecs-cluster-name.name
+}
+
+output "aws_ecs_service" {
+  value = module.ecs.nbc-lab-ecs-service-name.name
 }
