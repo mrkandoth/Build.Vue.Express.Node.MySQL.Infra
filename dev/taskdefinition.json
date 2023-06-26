@@ -1,0 +1,46 @@
+[
+  {
+    "name": "nbc-lab-container",
+    "image": "155009719402.dkr.ecr.us-west-1.amazonaws.com/nbc-venm-app:v1.0.8",
+    "cpu": 0,
+    "portMappings": [
+      {
+        "name": "nbc-lab-container-8080-tcp",
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "environment": [
+      {
+        "name": "DB_NAME",
+        "value": "testdb"
+      },
+      {
+        "name": "DB_HOST",
+        "value": "nbc-lab-rds.c4jl4644dlzh.us-west-1.rds.amazonaws.com"
+      },
+      {
+        "name": "DB_USER",
+        "value": "dbuser"
+      }
+    ],
+    "secrets": [
+      {
+          "name": "DB_PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:us-west-1:155009719402:secret:dev/mysql/cred-MPSO4k"
+      }
+    ],
+    "mountPoints": [],
+    "volumesFrom": [],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/nbc-lab",
+        "awslogs-region": "us-west-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
