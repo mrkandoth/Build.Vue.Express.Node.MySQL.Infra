@@ -1,6 +1,10 @@
 # NBC.Vue.Express.Node.MySQL.Infra
 An e2e IaC pipeline built using Terraform to bootstrap AWS ECS Infra with ALB and MySQL RDS.
 
+# Architecture
+
+![architecture](./architecture/NBC.Demo.App.Infra.jpeg)
+
 ## Instruction to deploy the stack
 
 1. Provide the following input variables.
